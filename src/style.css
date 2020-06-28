@@ -1,0 +1,30 @@
+:root {
+    --emoji-base-size: 256px;
+}
+
+.wrapper {
+    width: var(--emoji-base-size);
+    height: var(--emoji-base-size);
+    font-size: var(--emoji-base-size);
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    background-color: #f4900c;
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter {
+    font-size: 80%;
+    color: white;
+}
+
+.output {
+    height: var(--emoji-base-size);
+    background-color: gray;
+    overflow-x: auto;
+}
+
+.input {
+    height: 2em;
+}

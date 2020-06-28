@@ -1,0 +1,16 @@
+{
+    "name": "twemoji-moji",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/eai04191/twemoji-moji",
+    "author": "Irie Aoi <eai@mizle.net>",
+    "license": "MIT",
+    "dependencies": {
+        "html-to-image": "^0.1.1",
+        "parcel-bundler": "^1.12.4"
+    },
+    "scripts": {
+        "build": "parcel build src/index.html",
+        "start": "parcel src/index.html"
+    }
+}

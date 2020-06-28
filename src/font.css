@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "M PLUS Rounded 1c";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local("M PLUS Rounded 1c"), local("MPLUSRounded1c-Regular"),
+        url(./MPLUSRounded1c-Regular.ttf) format("truetype");
+}
