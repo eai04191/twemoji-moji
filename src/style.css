@@ -17,6 +17,7 @@
 .letter {
     font-size: 80%;
     color: white;
+    line-height: 1;
 }
 
 .output {
