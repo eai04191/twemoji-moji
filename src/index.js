@@ -27,6 +27,11 @@ const clear = () => {
     document.querySelector(".letter").innerText = null;
 };
 
+document.querySelector("input.input").addEventListener("keypress", (event) => {
+    if (event.keyCode === 13) {
+        convert();
+    }
+});
 document.querySelector("button.convert").addEventListener("click", (event) => {
     convert();
 });
