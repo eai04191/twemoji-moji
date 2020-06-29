@@ -29,6 +29,12 @@
     overflow-x: auto;
 }
 
-.input {
+input,
+select,
+button {
     height: 2em;
+}
+
+#colorSelector option {
+    color: white;
 }

@@ -59,3 +59,7 @@ document.querySelector("input.input").addEventListener("keypress", () => {
 document.querySelector("button.convert").addEventListener("click", convert);
 
 document.querySelector("button.clear").addEventListener("click", clear);
+
+document.querySelector("#colorSelector").addEventListener("change", (event) => {
+    document.documentElement.style.setProperty("--emoji-color", event.target.value);
+});
