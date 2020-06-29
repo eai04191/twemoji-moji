@@ -1,5 +1,7 @@
 :root {
     --emoji-size: 256px;
+    --emoji-round-size: 10%;
+    --emoji-color: #f4900c;
 }
 
 .wrapper {
@@ -7,8 +9,8 @@
     height: var(--emoji-size);
     font-size: var(--emoji-size);
     font-family: "M PLUS Rounded 1c", sans-serif;
-    background-color: #f4900c;
-    border-radius: 10%;
+    background-color: var(--emoji-color);
+    border-radius: var(--emoji-round-size);
     display: flex;
     justify-content: center;
     align-items: center;
