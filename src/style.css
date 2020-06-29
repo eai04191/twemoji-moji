@@ -1,17 +1,18 @@
 :root {
-    --emoji-base-size: 256px;
+    --emoji-size: 256px;
 }
 
 .wrapper {
-    width: var(--emoji-base-size);
-    height: var(--emoji-base-size);
-    font-size: var(--emoji-base-size);
+    width: var(--emoji-size);
+    height: var(--emoji-size);
+    font-size: var(--emoji-size);
     font-family: "M PLUS Rounded 1c", sans-serif;
     background-color: #f4900c;
     border-radius: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .letter {
@@ -21,7 +22,7 @@
 }
 
 .output {
-    height: var(--emoji-base-size);
+    height: var(--emoji-size);
     background-color: gray;
     overflow-x: auto;
 }

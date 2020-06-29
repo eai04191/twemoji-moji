@@ -1,5 +1,15 @@
 import * as htmlToImage from "html-to-image";
 
+const saveCanvas = (event) => {
+    const letter = event.target.attributes.alt.value;
+    const dataUrl = event.target.toDataURL("image/png");
+
+    const a = document.createElement("a");
+    a.download = letter;
+    a.href = dataUrl;
+    a.click();
+};
+
 const convert = () => {
     console.log();
     const letter = document.querySelector(".input").value[0] || "乳";
@@ -9,9 +19,23 @@ const convert = () => {
     htmlToImage
         .toPng(node)
         .then((dataUrl) => {
-            var img = new Image();
+            const size = parseInt(
+                getComputedStyle(document.documentElement).getPropertyValue(
+                    "--emoji-size"
+                )
+            );
+            const canvas = document.createElement("canvas");
+            canvas.addEventListener("click", saveCanvas);
+            canvas.setAttribute("alt", letter);
+            canvas.width = size;
+            canvas.height = size;
+            const context = canvas.getContext("2d");
+            const img = new Image();
+            img.onload = () => {
+                context.drawImage(img, 0, 0);
+                outputNode.insertBefore(canvas, outputNode.firstChild);
+            };
             img.src = dataUrl;
-            outputNode.insertBefore(img, outputNode.firstChild);
         })
         .catch((error) => {
             console.error(error);
