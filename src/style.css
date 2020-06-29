@@ -24,9 +24,27 @@
 }
 
 .output {
+    position: relative;
     height: var(--emoji-size);
     background-color: gray;
     overflow-x: auto;
+}
+
+.output::before {
+    content: "作った絵文字がここに表示されます\Aクリックでダウンロードできます";
+    white-space: pre;
+    color: white;
+    text-align: center;
+    line-height: 2;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+.output canvas {
+    position: relative;
 }
 
 input,
