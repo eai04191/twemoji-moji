@@ -10,6 +10,16 @@ const saveCanvas = (event) => {
     a.click();
 };
 
+const resizeCanvas = (canvas, width, height) => {
+    const img = new Image();
+    img.addEventListener("load", () => {
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(img, 0, 0, width, height);
+    });
+    img.setAttribute("src", canvas.toDataURL());
+};
+
 const convert = () => {
     console.log();
     const letter = document.querySelector(".input").value[0] || "乳";
@@ -19,23 +29,28 @@ const convert = () => {
     htmlToImage
         .toPng(node)
         .then((dataUrl) => {
+            // htmlToImageが正方形の画像を返さないので、トリミングする必要がある
             const size = parseInt(
                 getComputedStyle(document.documentElement).getPropertyValue(
                     "--emoji-size"
                 )
             );
+            const scale = window.devicePixelRatio;
             const canvas = document.createElement("canvas");
-            canvas.addEventListener("click", saveCanvas);
-            canvas.setAttribute("alt", letter);
-            canvas.width = size;
-            canvas.height = size;
-            const context = canvas.getContext("2d");
+            canvas.width = size * scale;
+            canvas.height = size * scale;
+            // 表示スケール200%の場合、256x2=512などになる
+            // ここで正方形のcanvasを作り、画像を入れることで不要な部分をカットする
             const img = new Image();
-            img.onload = () => {
-                context.drawImage(img, 0, 0);
+            img.addEventListener("load", () => {
+                canvas.getContext("2d").drawImage(img, 0, 0);
+                // この時点で正方形の画像ができあがる。スケールによっては目標サイズより大きいのでリサイズする
+                resizeCanvas(canvas, size, size);
+                canvas.addEventListener("click", saveCanvas);
+                canvas.setAttribute("alt", letter);
                 outputNode.insertBefore(canvas, outputNode.firstChild);
-            };
-            img.src = dataUrl;
+            });
+            img.setAttribute("src", dataUrl);
         })
         .catch((error) => {
             console.error(error);
