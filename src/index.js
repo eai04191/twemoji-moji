@@ -51,15 +51,11 @@ const clear = () => {
     document.querySelector(".letter").innerText = null;
 };
 
-document.querySelector("input.input").addEventListener("keypress", (event) => {
+document.querySelector("input.input").addEventListener("keypress", () => {
     if (event.keyCode === 13) {
         convert();
     }
 });
-document.querySelector("button.convert").addEventListener("click", (event) => {
-    convert();
-});
+document.querySelector("button.convert").addEventListener("click", convert);
 
-document.querySelector("button.clear").addEventListener("click", (event) => {
-    clear();
-});
+document.querySelector("button.clear").addEventListener("click", clear);
