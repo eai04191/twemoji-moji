@@ -61,5 +61,14 @@ document.querySelector("button.convert").addEventListener("click", convert);
 document.querySelector("button.clear").addEventListener("click", clear);
 
 document.querySelector("#colorSelector").addEventListener("change", (event) => {
-    document.documentElement.style.setProperty("--emoji-color", event.target.value);
+    document.documentElement.style.setProperty(
+        "--emoji-color",
+        event.target.value
+    );
+});
+document.querySelector("#shapeSelector").addEventListener("change", (event) => {
+    document.documentElement.style.setProperty(
+        "--emoji-round-size",
+        event.target.value === "circle" ? "50%" : "10%"
+    );
 });
